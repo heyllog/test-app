@@ -3,6 +3,9 @@ import { FC, useEffect } from 'react'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen'
+import { Provider } from 'react-redux'
+
+import { store } from 'store/store'
 
 // Keep the splash screen visible while we fetch resources
 void preventAutoHideAsync()
@@ -24,9 +27,11 @@ const RootLayout: FC = () => {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name='(tabs)' />
-    </Stack>
+    <Provider store={store}>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='(tabs)' />
+      </Stack>
+    </Provider>
   )
 }
 

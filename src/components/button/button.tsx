@@ -1,20 +1,22 @@
 import React, { FC } from 'react'
 
-import { TouchableOpacityProps } from 'react-native'
+import { StyleProp, StyleSheet, TouchableOpacityProps, ViewStyle } from 'react-native'
 
 import { AppText } from 'components/app-text'
 
 import { styles } from './styles'
 import { ActiveTouchAction } from '../active-touch-action'
 
-export interface ButtonProps {
+interface ButtonProps {
+  style?: StyleProp<ViewStyle>
   text: string
   onPress?: () => void | TouchableOpacityProps['onPress']
+  disabled?: boolean
 }
 
-export const Button: FC<ButtonProps> = ({ text, onPress }) => {
+export const Button: FC<ButtonProps> = ({ style, text, onPress, disabled }) => {
   return (
-    <ActiveTouchAction style={styles.button} onPress={onPress}>
+    <ActiveTouchAction style={StyleSheet.flatten([styles.button, style])} onPress={onPress} disabled={disabled}>
       <AppText style={styles.text}>{text}</AppText>
     </ActiveTouchAction>
   )

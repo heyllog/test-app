@@ -1,37 +1,32 @@
-import { FC } from 'react'
-
-import { router } from 'expo-router'
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, View } from 'react-native'
+import { FC, useEffect } from 'react'
 
 import { AppTitle } from 'components/app-text'
-import { Button } from 'components/button'
+import { ScreenWrapper } from 'components/screen-wrapper'
+import { VerticalSpace } from 'components/vertical-space'
+import { CurrentUserInfo, IpTracker, getCurrentIpInfo } from 'features/ip-tracker'
+import { useAppDispatch } from 'store/hooks'
 
-const Page: FC = () => (
-  <View style={styles.container}>
-    <AppTitle style={styles.header}>Native</AppTitle>
+const MainPage: FC = () => {
+  const dispatch = useAppDispatch()
 
-    <Button
-      text='Open settings'
-      onPress={() => {
-        router.push('/settings')
-      }}
-    />
+  useEffect(() => {
+    dispatch(getCurrentIpInfo())
+  }, [dispatch])
 
-    <StatusBar style='auto' />
-  </View>
-)
+  return (
+    <ScreenWrapper>
+      <AppTitle>IP Tracker</AppTitle>
+      <VerticalSpace />
 
-export default Page
+      <IpTracker />
+      <VerticalSpace />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    marginBottom: 20,
-  },
-})
+      <AppTitle>Your IP Info</AppTitle>
+      <VerticalSpace />
+
+      <CurrentUserInfo />
+    </ScreenWrapper>
+  )
+}
+
+export default MainPage

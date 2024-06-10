@@ -1,5 +1,12 @@
 export const sizes = {
-  blockBorderRadius: 10,
-  blockPaddingVertical: 14,
-  blockPaddingHorizontal: 14,
+  baseIndent: 24,
+
+  // block
+  blockBorderRadius: 16,
+  blockPaddingVertical: 24,
+  blockPaddingHorizontal: 20,
+
+  // page
+  pagePaddingVertical: 16,
+  pagePaddingHorizontal: 24,
 }
