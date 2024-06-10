@@ -14,6 +14,6 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: colors.background,
-    fontWeight: 'bold',
+    fontWeight: 'semibold',
   },
 })

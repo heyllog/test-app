@@ -1,5 +1,6 @@
 export const fonts = {
-  textFontFamily: undefined,
+  textFontFamily: 'Poppins',
+  titleFontFamily: 'Poppins-SemiBold',
   textFontSize: 16,
   titleFontSize: 32,
 }

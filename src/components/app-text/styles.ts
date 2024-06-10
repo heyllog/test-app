@@ -11,6 +11,6 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: fonts.titleFontSize,
-    fontWeight: 'bold',
+    fontFamily: fonts.titleFontFamily,
   },
 })

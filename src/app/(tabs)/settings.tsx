@@ -2,13 +2,14 @@ import { FC } from 'react'
 
 import { router } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
+import { AppTitle } from 'components/app-text'
 import { Button } from 'components/button'
 
-const Page: FC = () => (
+const SettingsPage: FC = () => (
   <View style={styles.container}>
-    <Text style={styles.header}>Settings</Text>
+    <AppTitle style={styles.header}>Settings</AppTitle>
 
     <Button
       text='Go back'
@@ -21,7 +22,7 @@ const Page: FC = () => (
   </View>
 )
 
-export default Page
+export default SettingsPage
 
 const styles = StyleSheet.create({
   container: {
@@ -31,8 +32,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    fontWeight: 'bold',
     marginBottom: 20,
-    fontSize: 36,
   },
 })

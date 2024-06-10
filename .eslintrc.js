@@ -29,6 +29,9 @@ module.exports = {
 
     // for expo _layout file, regex accepts kebab-case and _layout filenames
     'filename-rules/match': [2, '/^([a-z]+-)*[a-z]+(?:\\..*)?$|^_layout+(?:\\..*)?$/'],
+
+    // for assets require
+    'global-require': 'off',
   },
   ignorePatterns: ['.eslintrc.js', '.prettierrc.js', '*.config.js'],
 }
