@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "build:apk": "cd ./android && ./gradlew clean && ./gradlew assembleRelease && cd ../",
     "build:android": "npm run build:apk && mv ./android/app/build/outputs/apk/release/app-release.apk ./"
   },
