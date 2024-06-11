@@ -5,16 +5,18 @@ import { View } from 'react-native'
 import { GraphPoint, LineGraph } from 'react-native-graph'
 
 import { AppText, AppTitle } from 'components/app-text'
+import { Button } from 'components/button'
+import { ChartLogs } from 'features/price-chart/components/chart-logs'
 import { colors } from 'theme/colors'
 import { sizes } from 'theme/sizes'
 
 import { styles } from './styles'
-import { formatDate } from './utils'
 import { binanceClient } from '../../clients/binance-client'
 import { AggTradeMessage, SubscribeHandler } from '../../clients/binance-client/types'
 
 export const Chart: FC = () => {
   const [points, setPoints] = useState<GraphPoint[]>([])
+  const [isSocketClosed, setIsSocketClosed] = useState(false)
 
   const minMax = useMemo(
     () => ({
@@ -30,8 +32,6 @@ export const Chart: FC = () => {
     if (data.T && data.p) {
       const value = Number(data.p)
       const date = new Date(data.T)
-
-      console.log(date.toISOString())
 
       if (Number.isNaN(value) || Number.isNaN(date)) return
 
@@ -55,16 +55,35 @@ export const Chart: FC = () => {
     }
   }, [])
 
+  const handleSocketClosed = useCallback((): void => {
+    setIsSocketClosed(true)
+    setPoints([])
+    binanceClient.unsubscribe()
+  }, [])
+
   useFocusEffect(
     useCallback(() => {
-      setPoints([])
-      binanceClient.subscribe(handleMessages)
+      binanceClient.subscribe(handleMessages, handleSocketClosed, handleSocketClosed)
 
-      return (): void => {
-        binanceClient.unsubscribe()
-      }
-    }, [handleMessages]),
+      return (): void => binanceClient.unsubscribe()
+    }, [handleMessages, handleSocketClosed]),
   )
+
+  if (isSocketClosed) {
+    return (
+      <View style={[styles.container, styles.errorContainer]}>
+        <AppTitle style={styles.errorMessage}>Something went wrong, connection lost</AppTitle>
+        <Button
+          text='Reconnect'
+          onPress={() => {
+            setPoints([])
+            setIsSocketClosed(false)
+            binanceClient.subscribe(handleMessages, handleSocketClosed, handleSocketClosed)
+          }}
+        />
+      </View>
+    )
+  }
 
   if (points.length < 2) {
     return <AppText style={styles.container}>Loading...</AppText>
@@ -90,17 +109,7 @@ export const Chart: FC = () => {
       <View style={styles.container}>
         <AppText style={styles.minMax}>{minMax.min} USDT</AppText>
 
-        <View style={styles.logs}>
-          {points
-            .slice(0)
-            .reverse()
-            .slice(0, 10)
-            .map(({ date, value }) => (
-              <AppText key={date.toISOString()}>
-                At {formatDate(date)} BTC price was {value} USDT
-              </AppText>
-            ))}
-        </View>
+        <ChartLogs points={points} />
       </View>
     </>
   )

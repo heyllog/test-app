@@ -22,7 +22,7 @@ const TabsLayout: FC = () => {
   )
 
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: colors.primary }} detachInactiveScreens={false}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: colors.primary }}>
       <Tabs.Screen
         name='index'
         options={{
@@ -37,6 +37,7 @@ const TabsLayout: FC = () => {
           headerTitle: 'Market Data',
           tabBarLabel: 'Market Data',
           tabBarIcon: renderMarketDataIcon,
+          unmountOnBlur: true,
         }}
       />
       <Tabs.Screen

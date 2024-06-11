@@ -1,1 +1,2 @@
-export { AppText, AppTitle } from './app-text'
+export { AppText } from './app-text'
+export { AppTitle } from './app-title'

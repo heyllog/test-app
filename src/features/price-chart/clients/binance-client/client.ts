@@ -7,7 +7,7 @@ export class BinanceClient {
   protected connection: WebSocket | null = null
   protected lastMessageTime: number = 0
 
-  subscribe(handler: SubscribeHandler): void {
+  subscribe(onMessage: SubscribeHandler, onError: () => void, onClose: () => void): void {
     const data = {
       method: 'SUBSCRIBE',
       // params: ['btcusdt@aggTrade'],
@@ -24,8 +24,11 @@ export class BinanceClient {
           if (Date.now() - this.lastMessageTime < 1000) return
 
           this.lastMessageTime = Date.now()
-          handler(ev)
+          onMessage(ev)
         }
+
+        this.connection.onerror = onError
+        this.connection.onclose = onClose
 
         this.connection.send(JSON.stringify(data))
       }

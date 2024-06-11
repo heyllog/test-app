@@ -1,1 +1,1 @@
-export { Block } from './input'
+export { Block } from 'components/block/block'
