@@ -3,6 +3,7 @@ import { FC, useEffect } from 'react'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import { preventAutoHideAsync, hideAsync } from 'expo-splash-screen'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
 
 import { store } from 'store/store'
@@ -28,9 +29,11 @@ const RootLayout: FC = () => {
 
   return (
     <Provider store={store}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='(tabs)' />
-      </Stack>
+      <GestureHandlerRootView>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='(tabs)' />
+        </Stack>
+      </GestureHandlerRootView>
     </Provider>
   )
 }

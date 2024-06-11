@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react'
 
 import { AppTitle } from 'components/app-text'
 import { ScreenWrapper } from 'components/screen-wrapper'
-import { Carousel } from 'features/image-picker/components/carousel'
+import { Carousel } from 'features/image-picker'
 import { CurrentUserInfo, IpTracker, getCurrentIpInfo } from 'features/ip-tracker'
 import { useAppDispatch } from 'store/hooks'
 

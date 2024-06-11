@@ -22,7 +22,7 @@ const TabsLayout: FC = () => {
   )
 
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: colors.primary }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: colors.primary }} detachInactiveScreens={false}>
       <Tabs.Screen
         name='index'
         options={{

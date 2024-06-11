@@ -1,1 +1,1 @@
-export { Carousel } from 'features/image-picker/components/carousel/carousel'
+export { Carousel } from './carousel'

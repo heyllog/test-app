@@ -1,18 +1,11 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 
 import { AppTitle } from 'components/app-text'
 import { ScreenWrapper } from 'components/screen-wrapper'
 import { SelectedImage } from 'features/image-picker'
-import { CurrentUserInfo, getCurrentIpInfo } from 'features/ip-tracker'
-import { useAppDispatch } from 'store/hooks'
+import { CurrentUserInfo } from 'features/ip-tracker'
 
 const ProfilePage: FC = () => {
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(getCurrentIpInfo())
-  }, [dispatch])
-
   return (
     <ScreenWrapper>
       <AppTitle>Your IP Info</AppTitle>
