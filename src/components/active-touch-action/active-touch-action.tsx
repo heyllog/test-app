@@ -33,6 +33,7 @@ export const ActiveTouchAction: FC<Props> = ({ onPress, onLongPress, style, disa
 
   return (
     <TouchableWithoutFeedback
+      accessibilityRole='button'
       onPressOut={onPressOut}
       onPressIn={onTouchIn}
       onPress={onPress}

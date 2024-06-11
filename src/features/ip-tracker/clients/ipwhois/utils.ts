@@ -1,7 +1,7 @@
 import type { IpInfoResponse } from './types'
 import type { IpInfo } from '../../types'
 
-const getFormattedLocation = (city: string, emoji: string): string => {
+export const getFormattedLocation = (city: string, emoji: string): string => {
   if (emoji && city) return `${emoji} ${city}`
 
   if (city) return city

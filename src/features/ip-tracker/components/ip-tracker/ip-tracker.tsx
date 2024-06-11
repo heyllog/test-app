@@ -10,7 +10,7 @@ import { styles } from './styles'
 import { getIpInfo } from '../../store/actions/get-ip-info'
 import { selectIpInfoState } from '../../store/selectors'
 import { setIpAddress } from '../../store/slice'
-import { validateIpV4, validateIpV6 } from '../../utils/validate-ip'
+import { validateIpV4 } from '../../utils/validate-ip'
 import { IpInfoBlock } from '../ip-info-block'
 
 export const IpTracker: FC = () => {
@@ -25,8 +25,8 @@ export const IpTracker: FC = () => {
   }
 
   const handleTrack = (): void => {
-    if (validateIpV4(ipAddress) || validateIpV6(ipAddress)) {
-      dispatch(getIpInfo())
+    if (validateIpV4(ipAddress)) {
+      void dispatch(getIpInfo())
 
       return
     }
