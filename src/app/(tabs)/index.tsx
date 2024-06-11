@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react'
 
 import { AppTitle } from 'components/app-text'
 import { ScreenWrapper } from 'components/screen-wrapper'
+import { Carousel } from 'features/image-picker/components/carousel'
 import { CurrentUserInfo, IpTracker, getCurrentIpInfo } from 'features/ip-tracker'
 import { useAppDispatch } from 'store/hooks'
 
@@ -19,6 +20,9 @@ const MainPage: FC = () => {
 
       <AppTitle>Your IP Info</AppTitle>
       <CurrentUserInfo />
+
+      <AppTitle>Image Picker</AppTitle>
+      <Carousel />
     </ScreenWrapper>
   )
 }
