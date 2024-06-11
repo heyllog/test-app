@@ -7,6 +7,6 @@ export const sizes = {
   blockPaddingHorizontal: 20,
 
   // page
-  pagePaddingVertical: 16,
+  pagePaddingVertical: 24,
   pagePaddingHorizontal: 24,
 }

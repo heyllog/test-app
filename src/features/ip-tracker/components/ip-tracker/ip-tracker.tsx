@@ -4,12 +4,12 @@ import { View } from 'react-native'
 
 import { Button } from 'components/button'
 import { AppTextInput } from 'components/input'
-import { setIpAddress } from 'features/ip-tracker/store/slice'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 
 import { styles } from './styles'
 import { getIpInfo } from '../../store/actions/get-ip-info'
 import { selectIpInfoState } from '../../store/selectors'
+import { setIpAddress } from '../../store/slice'
 import { validateIpV4, validateIpV6 } from '../../utils/validate-ip'
 import { IpInfoBlock } from '../ip-info-block'
 
@@ -35,11 +35,11 @@ export const IpTracker: FC = () => {
   }
 
   return (
-    <View>
-      <AppTextInput placeholder='IP address' style={styles.input} onChangeText={handleChangeIp} />
+    <View style={styles.baseIndent}>
+      <AppTextInput placeholder='IP address' style={styles.baseIndent} onChangeText={handleChangeIp} />
 
       <Button
-        style={styles.button}
+        style={styles.baseIndent}
         text={isValidAddress ? 'Check' : 'Invalid IP'}
         onPress={handleTrack}
         disabled={isLoadingInfo}

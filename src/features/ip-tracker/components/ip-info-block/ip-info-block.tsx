@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { View } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 
 import { AppText } from 'components/app-text'
 import { Block } from 'components/block'
@@ -12,15 +12,16 @@ interface Props {
   isLoading: boolean
   isFailedLoad: boolean
   info?: IpInfo
+  style?: StyleProp<ViewStyle>
 }
 
-export const IpInfoBlock: FC<Props> = ({ info, isFailedLoad, isLoading }) => {
+export const IpInfoBlock: FC<Props> = ({ info, isFailedLoad, isLoading, style }) => {
   const isShowLoader = isLoading
   const isShowError = !isLoading && isFailedLoad
   const isShowInfo = !isShowLoader && !isShowError
 
   return (
-    <Block style={styles.container}>
+    <Block style={[styles.container, style]}>
       {isShowLoader && (
         <View style={styles.messageBox}>
           <AppText>Loading...</AppText>
