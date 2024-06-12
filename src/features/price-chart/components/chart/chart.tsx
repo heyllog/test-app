@@ -9,7 +9,6 @@ import { Button } from 'components/button'
 import { LoaderCircle } from 'components/loader-circle'
 import { ChartLogs } from 'features/price-chart/components/chart-logs'
 import { colors } from 'theme/colors'
-import { sizes } from 'theme/sizes'
 
 import { styles } from './styles'
 import { binanceClient } from '../../clients/binance-client'
@@ -108,8 +107,7 @@ export const Chart: FC = () => {
         points={points}
         color={colors.primary}
         gradientFillColors={[`${colors.primary}3d`, `${colors.primary}00`]}
-        verticalPadding={sizes.baseIndent}
-        animated
+        animated={false}
       />
 
       <View style={styles.container}>

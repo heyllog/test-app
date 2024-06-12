@@ -4,6 +4,7 @@ import { sizes } from 'theme/sizes'
 
 export const styles = StyleSheet.create({
   container: {
+    paddingVertical: sizes.pagePaddingVertical,
     paddingHorizontal: sizes.pagePaddingHorizontal,
   },
   loaderContainer: {
