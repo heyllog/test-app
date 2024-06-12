@@ -9,7 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build:apk": "cd ./android && ./gradlew clean && ./gradlew assembleRelease && cd ../",
-    "build:android": "npm run build:apk && mv ./android/app/build/outputs/apk/release/app-release.apk ./"
+    "build:android": "npm run build:apk && mkdir -p builds && mv -f ./android/app/build/outputs/apk/release/app-release.apk ./builds"
   },
   "dependencies": {
     "@expo/vector-icons": "14.0.2",

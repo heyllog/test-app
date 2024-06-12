@@ -6,6 +6,7 @@ import { GraphPoint, LineGraph } from 'react-native-graph'
 
 import { AppText, AppTitle } from 'components/app-text'
 import { Button } from 'components/button'
+import { LoaderCircle } from 'components/loader-circle'
 import { ChartLogs } from 'features/price-chart/components/chart-logs'
 import { colors } from 'theme/colors'
 import { sizes } from 'theme/sizes'
@@ -41,8 +42,8 @@ export const Chart: FC = () => {
       }
 
       setPoints((state) => {
-        // to limit max amount of points to 120
-        if (state.length >= 120) {
+        // to limit max amount of points to 60
+        if (state.length >= 60) {
           const newPoints = [...state]
           newPoints.shift()
           newPoints.push(point)
@@ -85,8 +86,13 @@ export const Chart: FC = () => {
     )
   }
 
-  if (points.length < 2) {
-    return <AppText style={styles.container}>Loading...</AppText>
+  if (points.length < 3) {
+    return (
+      <View style={styles.loaderContainer}>
+        <LoaderCircle />
+        <AppText style={styles.loaderText}>Loading chart data...</AppText>
+      </View>
+    )
   }
 
   return (

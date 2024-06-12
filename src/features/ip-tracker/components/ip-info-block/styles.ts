@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import { colors } from 'theme/colors'
+import {sizes} from "theme/sizes";
 
 export const styles = StyleSheet.create({
   container: {
@@ -29,5 +30,15 @@ export const styles = StyleSheet.create({
   errorMessage: {
     textAlign: 'center',
     color: colors.error,
+  },
+  reloadButton: {
+    marginTop: 10,
+    backgroundColor: colors.primary,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: sizes.blockBorderRadius,
+  },
+  reloadButtonText: {
+    color: colors.background,
   },
 })
