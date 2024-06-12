@@ -107,7 +107,7 @@ export const Chart: FC = () => {
         points={points}
         color={colors.primary}
         gradientFillColors={[`${colors.primary}3d`, `${colors.primary}00`]}
-        animated={false}
+        animated
       />
 
       <View style={styles.container}>
